@@ -14,6 +14,9 @@ class NoWardenSpawning : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("NoWardenSpawning plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("doWardenSpawning", "true")
+            logger.info("NoWardenSpawning plugin has been disabled.")
+        }
     }
 }
